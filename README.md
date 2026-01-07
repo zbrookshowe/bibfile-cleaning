@@ -5,4 +5,5 @@ This small program will remove any of the following fields from the Zotero-gener
 - language
 - file
 - abstract (including multi-line abstracts)
+
 and will trim down the list of authors to the number you want, using the entry "others" which results in BibTeX printing *et al.* in the bibliography.
