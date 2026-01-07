@@ -1,23 +1,29 @@
-def delete_items(lines: list):
+def delete_items(lines: list, del_language: bool = True, del_abstract: bool = True, del_file: bool = True):
     '''
     Description: deletes language and abstract bibtex
     entries from a list of lines of a .bib file.
     '''
-    # delete language
+    # delete language and file entries
     for line in lines:
-        lan_idx = line.find('language')
-        if lan_idx != -1:
-            lines.remove(line)
+        if del_language:
+            lan_idx = line.find('language')
+            if lan_idx != -1:
+                lines.remove(line)
+        if del_file:
+            file_idx = line.find('file')
+            if file_idx != -1:
+                lines.remove(line)
 
     # delete abstract
-    for i, line in enumerate(lines):
-        abs_idx = line.find('abstract')
-        if abs_idx != -1:
-            lines.remove(line)
-            # deal with multi-line abstract entries
-            while lines[i][-3:]!='},\n':
+    if del_abstract:
+        for i, line in enumerate(lines):
+            abs_idx = line.find('abstract')
+            if abs_idx != -1:
+                lines.remove(line)
+                # deal with multi-line abstract entries
+                while lines[i][-3:]!='},\n':
+                    lines.pop(i)
                 lines.pop(i)
-            lines.pop(i)
 
 
     return lines
