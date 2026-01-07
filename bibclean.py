@@ -47,8 +47,6 @@ def reduce_author_list(lines: list, max_num_authors: int):
     return lines
 
 
-
-
 def bibclean(filename, max_num_authors):
     '''
     Description: deletes language and abstract entries from
@@ -76,8 +74,8 @@ def bibclean(filename, max_num_authors):
 
 def main():
     # open file and read lines
-    filename = "missing_things.bib"
-    max_num_authors = 4
+    filename = "Yukawa_SINDy_bib.bib"
+    max_num_authors = 10
     bibclean(filename, max_num_authors)
     
 
